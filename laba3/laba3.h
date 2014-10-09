@@ -1,53 +1,50 @@
 #ifndef LABA3_H
 #define LABA3_H
 
+#include <iostream>
+
 using namespace std;
 
-class Node
+ struct Node
 {
-    public:
-            Node(int = 0);
-            Node* getRight();
-            Node* getLeft();
-            Node* getParent();
-            int getData();
-            void pushRight(Node* );
-            void pushLeft(Node* );
-            void pushData(int );
-
-
-    private:
-            int data;
-            Node *left;
-            Node *right;
-            Node *parent; //??? надо ли? с дружеств будет нужен)))
+    int data;
+    Node *left;
+    Node *right;
 
 };
 
 class Tree
 {
     public:
-            Tree();
-            Tree(const Tree&); //??? нужен ли здесь?
-            ~Tree();
+        Tree();
+		~Tree();
+		Tree(const Tree&);
+		Tree& operator=(const Tree&);
 
-            void InsertEl(int); //вставка элемента
-            void DeleteEl(int); //удаление элемента
-            bool FindEl(int); //поиск эелмента в дереве (вывод - просто есть или нет
+		void ShowTree(); //вывод дерева на экран
+		bool FindEl(int);//поиск элемента в дереве
+		void InsertEl(int);//вставка элемента
+		void DeleteEl(int);//удаление элемента
 
+        void ShowTree(Node*);
+        Node*FindEl(Node*,int);
+        void InsertEl(Node*&, int);
+        void DeleteEl(Node*&, int);
+
+        void DelAllTree(Node*);
+        void makeCopy(Node*&, Node*);
+
+        Node* getRoot();
+        void Union(Node*, Node*);
+        void Cross(Node*, Node*);
+        void Sub(Node*, Node*);
+        void DynSub(Node*, Node*);
 
 
     private:
-            Node *root;
-            Node* InsertEl(Node*, int);
-            Node* DeleteEl(Node*, int);
-            Node* FindEl(Node*, int);
-            void DeleteAllTree(Node*);
 
-
-
-
+        Node *root;
 
 };
 
-#endif // LABA3_H
+#endif
