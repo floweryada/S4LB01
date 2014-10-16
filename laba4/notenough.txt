@@ -1,0 +1,2 @@
+﻿нет PrettyConsole
+плохо сделан main
