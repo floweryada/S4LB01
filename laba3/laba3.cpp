@@ -195,7 +195,7 @@ void Tree::Union(Node* root1, Node* root2)
 {
     if (root1 -> left != NULL)
         {
-            if(FindEl((root1 -> left) -> data) == NULL)
+            if(FindEl((root1 -> left) -> data) == NULL) // FindEl имеет тип bool, сравнение с NULL не нужно (и даже вредно!), сие справедливо и далее
                 InsertEl((root1 -> left) -> data);
             Union(root1 -> left, root2);
         }

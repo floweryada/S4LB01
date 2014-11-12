@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-using namespace std;
+using namespace std;    // раскрытие пространства имЄн в заголовочнике €вл€етс€ плохим тоном
 
  struct Node
 {
@@ -21,12 +21,14 @@ class Tree
 		Tree(const Tree&);
 		Tree& operator=(const Tree&);
 
+        // методы, не измен€ющие состо€ние класса, необходимо помечать модификатором const
+        // хорошим тоном также €вл€етс€ передача в методы вывода ostream& с организацией вывода в этот поток
 		void ShowTree(); //вывод дерева на экран
 		bool FindEl(int);//поиск элемента в дереве
 		void InsertEl(int);//вставка элемента
 		void DeleteEl(int);//удаление элемента
 
-        void ShowTree(Node*);
+        void ShowTree(Node*); // можно было сделать эти 4 функции в private
         Node*FindEl(Node*,int);
         void InsertEl(Node*&, int);
         void DeleteEl(Node*&, int);
@@ -35,6 +37,7 @@ class Tree
         void makeCopy(Node*&, Node*);
 
         Node* getRoot();
+        // можно было сделать эти 4 функции в private, а здесь сделать аналогичные с аргументами-деревь€ми
         void Union(Node*, Node*);
         void Cross(Node*, Node*);
         void Sub(Node*, Node*);
