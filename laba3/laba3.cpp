@@ -152,7 +152,7 @@ void Tree::DeleteEl(Node*& root,int k)
                         root = root -> left;
                         delete helpNode;
                     }
-                    else// ñëó÷àé, êîãäà ó âåðøèíû äâà ïîòîìêà
+                    else// ÑÐ»ÑƒÑ‡Ð°Ð¹, ÐºÐ¾Ð³Ð´Ð° Ñƒ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹ Ð´Ð²Ð° Ð¿Ð¾Ñ‚Ð¾Ð¼ÐºÐ°
                     {
                         helpNode = root -> right;
                         while(helpNode -> left)
@@ -195,7 +195,7 @@ void Tree::Union(Node* root1, Node* root2)
 {
     if (root1 -> left != NULL)
         {
-            if(FindEl((root1 -> left) -> data) == NULL) // FindEl èìååò òèï bool, ñðàâíåíèå ñ NULL íå íóæíî (è äàæå âðåäíî!), ñèå ñïðàâåäëèâî è äàëåå
+            if(FindEl((root1 -> left) -> data) == NULL) // FindEl Ð¸Ð¼ÐµÐµÑ‚ Ñ‚Ð¸Ð¿ bool, ÑÑ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ñ NULL Ð½Ðµ Ð½ÑƒÐ¶Ð½Ð¾ (Ð¸ Ð´Ð°Ð¶Ðµ Ð²Ñ€ÐµÐ´Ð½Ð¾!), ÑÐ¸Ðµ ÑÐ¿Ñ€Ð°Ð²ÐµÐ´Ð»Ð¸Ð²Ð¾ Ð¸ Ð´Ð°Ð»ÐµÐµ
                 InsertEl((root1 -> left) -> data);
             Union(root1 -> left, root2);
         }
@@ -210,7 +210,7 @@ void Tree::Union(Node* root1, Node* root2)
 }
 
 
-void Tree::Cross(Node* root1, Node* root2) //ðàáîòàåò íåìíîãî íå òàê: âûêèäûâàåò âñå ýëåìåíòû, êîòîðûå ñîäåðæàòüñÿ â ïåðåñå÷åíèè. Ãðóáî ãîâîðÿ, ýòî äèíàìè÷ ðàçíîñòü
+void Tree::Cross(Node* root1, Node* root2) //Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ð½ÐµÐ¼Ð½Ð¾Ð³Ð¾ Ð½Ðµ Ñ‚Ð°Ðº: Ð²Ñ‹ÐºÐ¸Ð´Ñ‹Ð²Ð°ÐµÑ‚ Ð²ÑÐµ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‚ÑŒÑÑ Ð² Ð¿ÐµÑ€ÐµÑÐµÑ‡ÐµÐ½Ð¸Ð¸. Ð“Ñ€ÑƒÐ±Ð¾ Ð³Ð¾Ð²Ð¾Ñ€Ñ, ÑÑ‚Ð¾ Ð´Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ Ñ€Ð°Ð·Ð½Ð¾ÑÑ‚ÑŒ
 {
      if (root1 -> left != NULL)
         {
