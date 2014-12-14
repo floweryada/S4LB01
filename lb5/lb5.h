@@ -36,8 +36,11 @@ class Person
         int getMood() const;
 
         void addPhrase(std::string text, int infl);
-        int NewMood(int) {};
 
+        int NewMood(int curMood)
+        {
+            return curMood;
+        }
 
 
         void listen(Message);
@@ -55,7 +58,7 @@ class Choleric: public Person
 public:
     Choleric(): Person() {};
     ~Choleric() {};
-    int NewMood(int curMood)
+    virtual int NewMood(int curMood)
     {
         return (2*curMood);
     }
@@ -68,7 +71,7 @@ class Melancholic: public Person
     public:
         Melancholic(): Person() {};
         ~Melancholic() {};
-    int NewMood(int curMood)
+    virtual int NewMood(int curMood)
     {
         return (curMood/2);
     }
@@ -81,7 +84,7 @@ class Phlegmatic: public Person
     public:
         Phlegmatic(): Person() {};
         ~Phlegmatic() {};
-int NewMood(int curMood)
+    virtual int NewMood(int curMood)
     {
         return (curMood-2);
     }
@@ -95,7 +98,7 @@ class Sanguinik: public Person
         Sanguinik(): Person() {};
         ~Sanguinik() {};
 
-int NewMood(int curMood)
+virtual int NewMood(int curMood)
     {
         return (2+curMood);
     }

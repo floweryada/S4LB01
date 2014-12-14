@@ -16,8 +16,7 @@ void createDialog(Person *first, Person *second)
         cin >> ans;
             while (ans == "yes")
             {
-                first -> NewMood(first->getMood());
-                second -> NewMood(second->getMood());
+
                 message = first->say();
                 cout << "first[" << first->getMood() << "]: " << message.text << endl;
                 second->listen(message);
@@ -47,6 +46,7 @@ int main()
                 per1 = new Phlegmatic;
             if (c1 == 3)
                 per1 = new Melancholic;
+        per1 -> NewMood(per1 -> getMood());
 
         cout << "\n";
         cout << "The character of first person: ";
@@ -60,7 +60,7 @@ int main()
             if (c2 == 3)
                 per2 = new Melancholic;
         cout << endl;
-
+        per2 -> NewMood(per2->getMood());
 
     per1 -> addPhrase("1C+", +1);
     per1 -> addPhrase("1S+", +1);
