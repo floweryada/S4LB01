@@ -1,15 +1,22 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
+#include "laba4.h"
 
 class Console:
 
     public Tree
     {
-    private:
-        virtual void ShowTree();
-
     public:
-        void ShowAll();
+        Console();
+        ~Console();
+        Console(const Console&);
+        Console &operator=(const Console&);
+        void ShowTree();
+
+    private:
+        virtual void ShowTree(int *, int);
+
+
     };
 
 #endif // CONSOLE_H

@@ -1,9 +1,8 @@
 #ifndef LABA4_H
 #define LABA4_H
+#include "impl.h"
 
 #include <iostream>
-
-using namespace std;
 
 class Tree
 {
@@ -17,6 +16,7 @@ class Tree
 		void InsertEl(int);//вставка элемента
 		void DeleteEl(int);//удаление элемента
 		void DelAllTree();
+		void GetElem(int *&, int &);
 
         Tree Union(Tree*);
         Tree Cross(Tree*);

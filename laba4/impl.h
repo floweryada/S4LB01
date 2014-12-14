@@ -1,5 +1,6 @@
 #ifndef IMPL_H
 #define IMPL_H
+#include "laba4.h"
 
 
 class Impl
@@ -29,6 +30,10 @@ class Impl
         int Number(Node*);
         void ForShow(int *, int, Node*);
 
+        int getSize();
+        void createArray(Node*, int*&, int&);
+        void findSize(Node*, int&);
+
    public:
         Impl();
 		~Impl();
@@ -39,6 +44,7 @@ class Impl
 		void InsertEl(int);//вставка элемента
 		void DeleteEl(int);//удаление элемента
 		void DelAllTree();
+		void GetElem(int *&array, int &size);
 
         Impl GoodUnion (Impl *t);
         Impl GoodCross (Impl *t);
