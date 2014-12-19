@@ -32,6 +32,16 @@ void Message::putData(string text, int infl)
         this -> infl = infl;
     }
 
+string Message::getText()
+{
+    return this -> text;
+}
+
+int Message::getInfl()
+{
+    return this -> infl;
+}
+
 void Person::changeMood(int infl)
 {
     mood = mood + infl;
@@ -55,7 +65,7 @@ void Person::addPhrase(string text, int infl)
 
 void Person::listen(Message mess)
 {
-    changeMood(mess.infl);
+    changeMood(mess.getInfl());
 }
 
  Message Person::say() const

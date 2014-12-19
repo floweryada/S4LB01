@@ -7,13 +7,16 @@ using namespace std;
 
 class Message
 {
-public:
+private:
     std::string text;
     int minmood = 0;
     int maxmood = 10;
     int infl;
+public:
     bool can (int mood);
     void putData(std::string text, int infl);
+    std::string getText();
+    int getInfl();
 };
 
 class Person

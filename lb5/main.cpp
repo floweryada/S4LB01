@@ -18,11 +18,11 @@ void createDialog(Person *first, Person *second)
             {
 
                 message = first->say();
-                cout << "first[" << first->getMood() << "]: " << message.text << endl;
+                cout << "first[" << first->getMood() << "]: " << message.getText() << endl;
                 second->listen(message);
 
                 message = second->say();
-                cout << "second[" << second->getMood() << "]: " << message.text << endl;
+                cout << "second[" << second->getMood() << "]: " << message.getText() << endl;
                 first->listen(message);
                 getch();
             }
