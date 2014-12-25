@@ -9,7 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     connect(ui -> pushButton, SIGNAL(clicked()), this, SLOT(shiftUp()));
     connect(ui -> pushButton_2, SIGNAL(clicked()), this, SLOT(shiftDown()));
-    connect(ui -> actionSave, SIGNAL(triggered()), this, SLOT(save()));
     connect(ui -> actionClose, SIGNAL(triggered()), this, SLOT(close()));
 
 }
@@ -39,12 +38,15 @@ void MainWindow::shiftUp()
             str[n-1][i]=k;
         }
         for (int i=0;i<n;i++)
-         {   for(int j=0;j<n;j++)
-        { if((i+j)>0)
-            str[0][0] += ","+str[i][j];
-        }
-        str[0][0]+=";";
-        }
+         {
+            for(int j=0;j<n;j++)
+            {
+                if (j%n !=0)
+                    str[0][0] += ","+str[i][j];
+                else str[0][0] += " "+str[i][j];
+            }
+            str[0][0]+=";";
+         }
 
      ui->textBrowser_2->setText(str[0][0]);
 }
@@ -69,12 +71,14 @@ void MainWindow::shiftDown()
             str[0][i]=k;
         }
         for (int i=0;i<n;i++)
-         {   for(int j=0;j<n;j++)
-        { if((i+j)>0)
-            str[0][0] += ","+str[i][j];
-        }
-        str[0][0]+=";";
-        }
-
+         {
+            for(int j=0;j<n;j++)
+            {
+                if (j%n !=0)
+                    str[0][0] += ","+str[i][j];
+                else str[0][0] += " "+str[i][j];
+            }
+            str[0][0]+=";";
+         }
      ui->textBrowser_2->setText(str[0][0]);
 }
