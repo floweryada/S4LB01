@@ -32,7 +32,8 @@ void MainWindow::shiftUp()
           }
         for (int i=0; i<n; i++)
         {
-            int k=x[0][i];
+            QString k;
+            k=QString("%1").arg(x[0][i]);
             for (int j=0; j<n; j++)
                 str[j][i]=QString("%1").arg(x[j+1][i]);
             str[n-1][i]=k;
@@ -61,9 +62,10 @@ void MainWindow::shiftDown()
           }
         for (int i=0; i<n; i++)
         {
-            int k=x[n-1][i];
-            for (int j=0; j<n; j++)
-                str[j+1][i]=QString("%1").arg(x[j][i]);
+            QString k;
+            k=QString("%1").arg(x[n-1][i]);
+            for (int j=1; j<n; j++)
+                str[j][i]=QString("%1").arg(x[j-1][i]);
             str[0][i]=k;
         }
         for (int i=0;i<n;i++)
