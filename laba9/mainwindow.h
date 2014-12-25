@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QMap>
+#include <QLabel>
+#include <QTextEdit>
+#include <QString>
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +20,7 @@ public:
     ~MainWindow();
 
 private:
+    QTextEdit *textEdit;
     Ui::MainWindow *ui;
 
 private slots:
