@@ -1,4 +1,7 @@
 #include "widget.h"
+#include <iostream>
+#include <QLineEdit>
+
 
 using namespace std;
 
@@ -6,22 +9,23 @@ Widget::Widget(QWidget *parent)
     : QWidget(parent)
 {
     QVBoxLayout* layout = new QVBoxLayout;
-    setLayout(layout);
-    layout -> setContentsMargins(5,5,5,5);
-    layout -> setSpacing(10);
 
-    QPushButton* butL = new QPushButton ("Shift left");
-    connect(butL, SIGNAL(clicked()), this, SLOT(left));
-    layout -> addWidget(butL);
+    line = new QLineEdit();
+    layout -> addWidget(line);
 
-    QPushButton* butR = new QPushButton ("Shift right");
-    connect(butR, SIGNAL(clicked()), this, SLOT(right));
+    QPushButton* butR = new QPushButton ("Move Right");
+    connect(butR, SIGNAL(clicked()), this, SLOT(moveRight()));
     layout -> addWidget(butR);
 
-    QLineEdit* box = new QLineEdit();
-    layout -> addWidget(box);
+    QPushButton* butL = new QPushButton ("Move Left");
+    connect(butL, SIGNAL(clicked()), this, SLOT(moveLeft()));
+    layout -> addWidget(butL);
 
+    QPushButton* butC = new QPushButton ("Clear");
+    connect(butC, SIGNAL(clicked()), this, SLOT(clear()));
+    layout -> addWidget(butC);
 
+    setLayout(layout);
 }
 
 Widget::~Widget()
@@ -29,12 +33,33 @@ Widget::~Widget()
 
 }
 
-void Widget::right()
+void Widget::moveLeft()
 {
-//to do дописать эти две функции, которые осуществляют сдвиг при нажатии на соответствующие кнопки
+    QString arr = this -> line -> text();
+    QStringList normarr = arr.split(" ");
+    QStringList *newarr = new QStringList();
+
+        for(int i = 1; i < normarr.length(); i++)
+            newarr -> append(normarr[i]);
+
+        newarr -> append(normarr[0]);
+        line -> setText(newarr -> join(" "));
 }
 
-void Widget::left()
+void Widget::moveRight()
 {
+    QString arr = this -> line -> text();
+    QStringList normarr = arr.split(" ");
+    QStringList *newarr = new QStringList();
 
+    newarr -> append(normarr[normarr.length()-1]);
+            for(int i = 0; i < normarr.length()-1; i++)
+               newarr -> append(normarr[i]);
+
+            line -> setText(newarr -> join(" "));
+}
+
+void Widget::clear()
+{
+    line->setText("");
 }

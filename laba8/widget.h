@@ -4,25 +4,26 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include <QSpinBox>
 #include <QStringList>
 #include <QLineEdit>
 
 class Widget : public QWidget
 {
     Q_OBJECT
-    std::vector <int> array;
-    QStringList list;
+
+    QLineEdit *line;
 
 public:
     Widget(QWidget *parent = 0);
     ~Widget();
 
-private:
+signals:
+    void numberAdded(QString);
 
 private slots:
-    void left();
-    void right();
+    void moveRight();
+    void moveLeft();
+    void clear();
 
 };
 
