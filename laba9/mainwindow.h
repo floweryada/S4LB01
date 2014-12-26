@@ -26,6 +26,7 @@ private:
 private slots:
     void shiftUp();
     void shiftDown();
+    void openFile();
 
 };
 

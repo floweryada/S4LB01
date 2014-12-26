@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "math.h"
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui -> pushButton, SIGNAL(clicked()), this, SLOT(shiftUp()));
     connect(ui -> pushButton_2, SIGNAL(clicked()), this, SLOT(shiftDown()));
     connect(ui -> actionClose, SIGNAL(triggered()), this, SLOT(close()));
+    connect(ui -> actionOpen, SIGNAL(triggered()), this, SLOT(openFile()));
 
 }
 
@@ -37,15 +39,17 @@ void MainWindow::shiftUp()
                 str[j][i]=QString("%1").arg(x[j+1][i]);
             str[n-1][i]=k;
         }
+        str[0][0]+=",";
         for (int i=0;i<n;i++)
          {
             for(int j=0;j<n;j++)
             {
-                if (j%n !=0)
-                    str[0][0] += ","+str[i][j];
-                else str[0][0] += " "+str[i][j];
+                if (((j+i) != 0)&&((j+1)%n != 0))
+                    str[0][0] += str[i][j]+",";
+                else if (((j+i) != 0)&&((j+1)%n == 0))
+                    str[0][0] += str[i][j]+"";
             }
-            str[0][0]+=";";
+            str[0][0]+=";\n";
          }
 
      ui->textBrowser_2->setText(str[0][0]);
@@ -70,15 +74,24 @@ void MainWindow::shiftDown()
                 str[j][i]=QString("%1").arg(x[j-1][i]);
             str[0][i]=k;
         }
+        str[0][0]+=",";
         for (int i=0;i<n;i++)
          {
             for(int j=0;j<n;j++)
             {
-                if (j%n !=0)
-                    str[0][0] += ","+str[i][j];
-                else str[0][0] += " "+str[i][j];
+                if (((j+i) != 0)&&((j+1)%n != 0))
+                    str[0][0] += str[i][j]+",";
+                else if (((j+i) != 0)&&((j+1)%n == 0))
+                    str[0][0] += str[i][j]+"";
             }
-            str[0][0]+=";";
+            str[0][0]+=";\n";
          }
      ui->textBrowser_2->setText(str[0][0]);
 }
+
+void MainWindow::openFile()
+{
+    QFileDialog *fd= new QFileDialog();
+    fd->show();
+}
+
