@@ -34,14 +34,24 @@ int main()
         cout<<e.what()<<endl;
     }
 
-    for (IntTree::Iterator it = tree1.begin(); it != tree1.end(); ++it)
-        cout << *it << " ";
-    cout << endl;
+        for (IntTree::Iterator it = tree1.begin(); it != tree1.end(); ++it)
+            cout << *it << " ";
+        cout << endl;
 
-/*
+
     Tree <SmartPointer<int> > tree2;
+    for (int i = 1; i < 3; i++)
+    {
+        cout << "Enter number: ";
+        int num;
+        cin >>  num;
+
+        SmartPointer<int> data;
+        data = new int(num);
+        tree2.InsertEl(data);
+    }
 
     tree2.ShowTree();
-*/
+
     return 0;
 }

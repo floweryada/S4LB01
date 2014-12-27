@@ -7,11 +7,11 @@ class IteratorImpl
     friend Tree;
 
     Tree* par; //указатель на объект (дерево)
-    Node cur; //элемент объекта (узел дерева)
+    Node* cur; //элемент объекта (узел дерева)
 
 public:
     IteratorImpl():par(0), cur(0) { }
-    IteratorImpl(Tree* par, Node cur): par(par), cur(cur) { }
+    IteratorImpl(Tree* par, Node* cur): par(par), cur(cur) { }
     IteratorImpl(const IteratorImpl &it): par(it.par), cur(it.cur) { }
     IteratorImpl& operator=(const IteratorImpl &it)
     {

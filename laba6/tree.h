@@ -15,8 +15,7 @@ class Tree
     struct Node;
 
 public:
-    typedef SmartPointer<Node> SmNode;
-    typedef IteratorImpl<Tree<T>, T, SmNode>Iterator;
+    typedef IteratorImpl<Tree, T, Node>Iterator;
 
 private:
     struct Node
@@ -25,14 +24,12 @@ private:
         Node *left;
         Node *right;
         Node *parent;
-
+        int height;
     };
 
     Node *root;
     friend Iterator;
     T* type;
-    int height, index;
-
 
 public:
     Tree() { root = NULL; }
@@ -58,7 +55,7 @@ public:
         if(this != &a)
         {
             DelAllTree(root);
-            root = new SmNode;
+            root = new Node;
             root -> data = a.root -> data;
             root -> left = 0;
             root -> right = 0;
@@ -299,11 +296,11 @@ public:
 
 Iterator begin ()
 {
-    Node* lastNode;
-    lastNode = root;
-    while (lastNode -> left)
-        lastNode = lastNode -> left;
-    return Iterator(this, lastNode);
+    Node* firstNode;
+    firstNode = root;
+    while (firstNode -> left)
+        firstNode = firstNode -> left;
+    return Iterator(this, firstNode);
 }
 
 Iterator end()
